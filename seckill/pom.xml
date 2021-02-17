@@ -66,6 +66,12 @@
       <version>6.0.2.Final</version>
     </dependency>
 
+    <!--日期时间处理-->
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>2.9.1</version>
+    </dependency>
 
     <dependency>
       <groupId>junit</groupId>
@@ -154,18 +160,16 @@
             </configurationFile>
           </configuration>
         </plugin>
-
+        
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <source>8</source>
+            <target>8</target>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>8</source>
-          <target>8</target>
-        </configuration>
-      </plugin>
-    </plugins>
   </build>
 </project>
