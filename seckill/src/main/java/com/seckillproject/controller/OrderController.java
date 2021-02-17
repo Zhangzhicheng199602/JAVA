@@ -36,7 +36,7 @@ public class OrderController extends BaseController{
         //获取用户的登录信息
         UserModel userModel = (UserModel)httpServletRequest.getSession().getAttribute("LOGIN_USER");
 
-        OrderModel orderModel = orderService.createOrder(userModel.getId(), itemId, amount);
+        OrderModel orderModel = orderService.createOrder(userModel.getId(), itemId, amount, promoId);
         return CommonReturnType.create(null);
     }
 }

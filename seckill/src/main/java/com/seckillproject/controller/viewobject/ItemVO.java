@@ -2,8 +2,10 @@ package com.seckillproject.controller.viewobject;
 
 import java.math.BigDecimal;
 
+//用于前端展示的商品数据
 public class ItemVO {
 
+    //商品ID
     private Integer id;
 
     //商品名称
@@ -23,6 +25,19 @@ public class ItemVO {
 
     //商品描述图片的url
     private String imgUrl;
+
+    //商品是否在秒杀活动中，以及其状态
+    //0:没有活动 1:活动待开始 2:秒杀活动进行中
+    private Integer promoStatus;
+
+    //活动价格
+    private BigDecimal promoPrice;
+
+    //秒杀活动ID
+    private Integer promoId;
+
+    //开始时间，用来做倒计时展示
+    private String startDate;
 
     public Integer getId() {
         return id;
@@ -78,5 +93,37 @@ public class ItemVO {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public Integer getPromoStatus() {
+        return promoStatus;
+    }
+
+    public void setPromoStatus(Integer promoStatus) {
+        this.promoStatus = promoStatus;
+    }
+
+    public BigDecimal getPromoPrice() {
+        return promoPrice;
+    }
+
+    public void setPromoPrice(BigDecimal promoPrice) {
+        this.promoPrice = promoPrice;
+    }
+
+    public Integer getPromoId() {
+        return promoId;
+    }
+
+    public void setPromoId(Integer promoId) {
+        this.promoId = promoId;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 }

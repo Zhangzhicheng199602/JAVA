@@ -8,6 +8,7 @@ import com.seckillproject.error.BusinessException;
 import com.seckillproject.error.EmBusinessError;
 import com.seckillproject.service.ItemService;
 import com.seckillproject.service.model.ItemModel;
+import com.seckillproject.service.model.PromoModel;
 import com.seckillproject.validator.ValidationResult;
 import com.seckillproject.validator.ValidatorImpl;
 import org.springframework.beans.BeanUtils;
@@ -28,6 +29,8 @@ public class ItemServiceImpl implements ItemService {
     private ItemDOMapper itemDOMapper;
     @Autowired
     private ItemStockDOMapper itemStockDOMapper;
+    @Autowired
+    private PromoServiceImpl promoService;
 
 
     //创建商品
@@ -78,6 +81,14 @@ public class ItemServiceImpl implements ItemService {
 
         //将dataObj转换成Model
         ItemModel itemModel = convertModelFromDataObject(itemDO,itemStockDO);
+
+        //获取商品的活动信息
+        PromoModel promoModel = promoService.getPromoByItemId(itemModel.getId());
+
+        //如果活动存在且没结束，商品添加活动
+        if (promoModel != null && promoModel.getStatus() != 3) {
+            itemModel.setPromoModel(promoModel);
+        }
 
         return itemModel;
     }
