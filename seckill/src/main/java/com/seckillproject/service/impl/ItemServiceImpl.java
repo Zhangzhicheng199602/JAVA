@@ -97,6 +97,12 @@ public class ItemServiceImpl implements ItemService {
         }
     }
 
+    @Override
+    @Transactional
+    public void increaseSales(Integer itemId, Integer amount) throws BusinessException {
+        itemDOMapper.increaseSales(itemId,amount);
+    }
+
 
     //转化itemmodel->dataobject
     private ItemDO convertItemDOFromItemModel(ItemModel itemModel) {
